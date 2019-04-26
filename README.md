@@ -1,0 +1,1 @@
+# Kuzzle React boilerplate
