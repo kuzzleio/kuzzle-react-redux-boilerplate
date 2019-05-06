@@ -27,21 +27,6 @@ git clone --recurse-submodules https://github.com/kuzzleio/kuzzle-react-redux-bo
 > Note that the `--recurse-submodules` is important since the `backend` folder is a submodule pointing to the [Kuzzle Plugin
 > Advanced Boilerplate](ttps://github.com/kuzzleio/kuzzle-plugin-advanced-boilerplate).
 
-Then, delete the Git tree and reinitialize the repo from scratch:
-
-```bash
-cd kuzzle-vuejs-coreui-boilerplate
-rm -rf .git
-```
-
-At this point you may rename the folder of your project to a meaningful name.
-Then, you can set remote(s) the usual way:
-
-```bash
-git init
-git remote add origin <another-git-server-URL-here>
-```
-
 ## And then what?
 
 Start your local Kuzzle instance by typing
@@ -60,3 +45,22 @@ npm install && npm run serve
 ```
 
 It's done! Now you can visit [localhost:3000](http://localhost:3000/) and login with the previous created account.
+
+## Start a new project
+
+If you want to start a new project from this boilerplate, delete the Git tree and reinitialize the repo from scratch:
+
+```bash
+cd kuzzle-react-redux-boilerplate
+rm -rf .git
+```
+
+At this point you may rename the folder of your project to a meaningful name.
+Then, you can set remote(s) the usual way:
+
+```bash
+git init
+git remote add origin <another-git-server-URL-here>
+```
+
+It's all over! Now you can start your new project using Kuzzle and React.
