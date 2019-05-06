@@ -41,7 +41,7 @@ Serve your web app locally by typing:
 
 ```bash
 cd frontend
-npm install && npm run serve
+yarn install && yarn start
 ```
 
 It's done! Now you can visit [localhost:3000](http://localhost:3000/) and login with the previous created account.
