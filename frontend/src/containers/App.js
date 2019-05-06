@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import kuzzle from '../services/kuzzle';
 import Home from './Home';
 import Login from './Login';
-import Offline from '../components/Loading';
+import Offline from '../components/Offline';
 import Loading from '../components/Loading';
 import ActionCreators from '../state/actions';
 import './App.css';
@@ -57,6 +57,8 @@ class App extends Component {
 
   render() {
     const { user, isReady, isOnline } = this.props;
+
+    console.log(isReady, isOnline);
 
     if (!isOnline) {
       return <Offline />;
