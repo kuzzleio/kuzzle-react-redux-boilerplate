@@ -1,4 +1,4 @@
-import { call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import ActionsTypes from '../constants/ActionsTypes';
 import ActionCreators from './actions';
 import kuzzle from '../services/kuzzle';

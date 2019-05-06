@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { ToastContainer, toast } from 'react-toastify';
 import {
   BrowserRouter as Router,
@@ -14,6 +13,8 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import kuzzle from '../services/kuzzle';
 import Home from './Home';
 import Login from './Login';
+import Offline from '../components/Loading';
+import Loading from '../components/Loading';
 import ActionCreators from '../state/actions';
 import './App.css';
 
@@ -22,13 +23,26 @@ class App extends Component {
     super(props);
 
     kuzzle.on('networkError', error => {
-      toast.error(error);
+      console.error(error.message);
     });
 
     this._initialize();
   }
 
   async _initialize() {
+    kuzzle.addListener('connected', () => {
+      this.props.setAppOnline();
+    });
+    kuzzle.addListener('reconnected', () => {
+      this.props.setAppOnline();
+    });
+    kuzzle.addListener('disconnected', () => {
+      this.props.setAppOffline();
+    });
+    kuzzle.addListener('tokenExpired', () => {
+      this.props.logout();
+    });
+
     await kuzzle.connect();
     this.props.fetchJwt();
   }
@@ -42,10 +56,14 @@ class App extends Component {
   }
 
   render() {
-    const { user, isReady } = this.props;
+    const { user, isReady, isOnline } = this.props;
+
+    if (!isOnline) {
+      return <Offline />;
+    }
 
     if (!isReady) {
-      return <span>Loading...</span>;
+      return <Loading />;
     }
 
     return (
@@ -74,9 +92,13 @@ export default connect(
     user: state.app.user,
     notification: state.app.notification,
     isReady: state.app.isReady,
+    isOnline: state.app.isOnline,
   }),
   {
     clearNotif: ActionCreators.clearNotif,
     fetchJwt: ActionCreators.fetchJwt,
+    setAppOnline: ActionCreators.setAppOnline,
+    setAppOffline: ActionCreators.setAppOffline,
+    logout: ActionCreators.logout,
   }
 )(App);

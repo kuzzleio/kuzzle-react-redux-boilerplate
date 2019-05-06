@@ -5,6 +5,14 @@ const ActionCreators = {
     type: ActionsTypes.SET_APP_READY,
     payload: {},
   }),
+  setAppOnline: () => ({
+    type: ActionsTypes.SET_APP_ONLINE,
+    payload: {},
+  }),
+  setAppOffline: () => ({
+    type: ActionsTypes.SET_APP_OFFLINE,
+    payload: {},
+  }),
   fetchJwt: () => ({
     type: ActionsTypes.FETCH_JWT,
     payload: {},

@@ -12,6 +12,18 @@ const reducersMap = {
         isReady: { $set: true },
       },
     }),
+  [ActionsTypes.SET_APP_ONLINE]: state =>
+    update(state, {
+      app: {
+        isOnline: { $set: true },
+      },
+    }),
+  [ActionsTypes.SET_APP_OFFLINE]: state =>
+    update(state, {
+      app: {
+        isOnline: { $set: false },
+      },
+    }),
   [ActionsTypes.LOGIN_SUCCESS]: (state, { jwt, user }) =>
     update(state, {
       app: {
