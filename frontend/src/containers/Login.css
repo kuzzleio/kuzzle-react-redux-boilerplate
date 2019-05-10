@@ -1,0 +1,28 @@
+.Login {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: auto;
+}
+
+.Login input {
+  margin-bottom: 16px;
+  padding: 8px;
+  border-radius: 4px;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(142, 142, 142);
+}
+
+.Login button {
+  padding: 8px;
+  border-radius: 4px;
+  background: #0f2935;
+  border: 1px solid #0f2935;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.Login button:hover {
+  opacity: 0.8;
+}
